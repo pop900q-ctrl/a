@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدعم الفني - تقديم تذكرة</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .ticket-card {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+        }
+        .ticket-card h2 {
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        .form-group textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .alert {
+            display: none;
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .success { background-color: #d4edda; color: #155724; }
+    </style>
+</head>
+<body>
+
+<div class="ticket-card">
+    <h2>تقديم تذكرة دعم فني (IT)</h2>
+    <form id="ticketForm">
+        <div class="form-group">
+            <label for="email">البريد الإلكتروني:</label>
+            <input type="email" id="email" required placeholder="example@company.com">
+        </div>
+        
+        <div class="form-group">
+            <label for="category">نوع المشكلة:</label>
+            <select id="category" required>
+                <option value="">اختر نوع المشكلة...</option>
+                <option value="hardware">أجهزة (كمبيوتر / طابعة)</option>
+                <option value="software">برامج وأنظمة</option>
+                <option value="network">الشبكة والإنترنت</option>
+                <option value="other">أخرى</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="description">وصف المشكلة:</label>
+            <textarea id="description" required placeholder="اشرح المشكلة بالتفصيل..."></textarea>
+        </div>
+
+        <button type="submit">إرسال التذكرة</button>
+    </form>
+    
+    <div id="statusMessage" class="alert success">تم إرسال التذكرة بنجاح! سيرد عليك فريق الـ IT قريباً.</div>
+</div>
+
+<script>
+    document.getElementById('ticketForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // هنا يمكنك أخذ البيانات وإرسالها للباك إند (Backend) أو قاعدة البيانات
+        const email = document.getElementById('email').value;
+        const category = document.getElementById('category').value;
+        const description = document.getElementById('description').value;
+
+        console.log("Ticket Data:", { email, category, description });
+
+        // إظهار رسالة النجاح وتفريغ الحقول
+        document.getElementById('statusMessage').style.display = 'block';
+        this.reset();
+    });
+</script>
+
+</body>
+</html>
